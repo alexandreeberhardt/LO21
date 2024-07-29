@@ -1,8 +1,9 @@
 #include <iostream>
 #include <string>
+#include <sstream>
 using namespace std;
 enum Statut {celibataire, marie, veuf};
-enum Sexe {homme, femme,nb};
+enum Sexe {homme, femme};
 class Personne{
     private : //implicite
     string nom;
@@ -20,6 +21,11 @@ class Personne{
         sexe=se;
         situationFamiliale=st;
     };
+    string retourneInfo()const{
+        stringstream sb;
+        sb<<(sexe==homme?"M. ":"Mme. ")<< nom<<" "<<prenom;
+        return sb.str();
+    }
 };
 int main(){
     Personne p("Eber","Alex",2003,homme,celibataire);
